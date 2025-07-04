@@ -35,7 +35,8 @@ jobs:
 
       - name: Copy build files to Terraform directory
         run: |
-          cp -r ./react_app/build ./terraform_static_webhosting/
+        
+          cp -r ./react_app/dist ./terraform_static_webhosting/
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
