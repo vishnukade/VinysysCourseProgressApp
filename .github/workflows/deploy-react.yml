@@ -33,12 +33,13 @@ jobs:
       # ✅ FIXED: Use "build", not "dist"
       - name: Copy build files to Terraform directory
         run: |
-          rm -rf ./terraform_static_webhosting/dist
-          cp -r ./react_app/dist ./terraform_static_webhosting/
+          rm -rf ./terraform_static_webhosting/build
+          cp -r ./react_app/dist ./terraform_static_webhosting/build
+
 
       - name: List copied files (debug)
         run: |
-          ls -R ./terraform_static_webhosting/dist
+          ls -R ./terraform_static_webhosting/build
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
