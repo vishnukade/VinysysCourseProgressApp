@@ -12,7 +12,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    # 👇 This line makes sure your environment's secrets are available
     environment: projectenv
 
     steps:
@@ -31,10 +30,15 @@ jobs:
         working-directory: ./react_app
         run: npm run build
 
+      # ✅ FIXED: Use "build", not "dist"
       - name: Copy build files to Terraform directory
         run: |
           rm -rf ./terraform_static_webhosting/dist
           cp -r ./react_app/dist ./terraform_static_webhosting/
+
+      - name: List copied files (debug)
+        run: |
+          ls -R ./terraform_static_webhosting/dist
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
