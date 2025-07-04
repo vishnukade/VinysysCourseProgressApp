@@ -1,0 +1,428 @@
+/* General Body Styles
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f4f8;
+  color: #333;
+}
+
+/* App Container (for pages with Header/Footer) */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Main Content Wrapper */
+.main-content {
+  flex: 1;
+  background-color: #ffffff;
+  border: 2px solid #aed6f1;
+  border-radius: 12px;
+  padding: 20px 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+/* --- NEW STYLES FOR LOGIN/ACCOUNT PAGES --- */
+/* This will make the body fill the entire screen and center the form */
+body.full-screen-center {
+  background-color: #f6f8fa; /* Consistent background color from previous UIs */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0; /* Remove padding */
+}
+
+/* When the layout is hidden, the main content should not have the padding/border/shadow */
+.main-content.no-layout {
+  flex: none; /* Do not take up flex space */
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  display: flex; /* Use flexbox to center the content inside */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  color: #2c3e50;
+}
+
+.nav-links a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #007bff;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.hero-section p {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 30px;
+}
+
+.hero-image {
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.hero-buttons .btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  margin: 0 10px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.hero-buttons .btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Features Section */
+.features-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 50px 0;
+  gap: 20px;
+}
+
+.feature-card {
+  background-color: #fff;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  width: 30%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.feature-card h3 {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  color: #7f8c8d;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 0.9rem;
+  color: #666;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-links a {
+  margin-left: 20px;
+  color: #666;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* --- ADDED FORMS STYLES (from previous responses) --- */
+
+.form-container {
+  background-color: #ffffff;
+  padding: 60px 80px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 550px;
+  text-align: center;
+}
+
+.form-container h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 45px;
+  color: #000000;
+  text-align: center;
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: #555;
+  font-size: 18px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 18px 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 18px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #008cba;
+  box-shadow: 0 0 0 2px rgba(0, 140, 186, 0.2);
+}
+
+.login-button {
+  width: 100%;
+  padding: 20px;
+  background-color: #008cba;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  margin-top: 35px;
+}
+
+.login-button:hover {
+  background-color: #007799;
+}
+
+.login-button:active {
+  transform: scale(0.99);
+}
+
+.switch-button {
+  width: 100%;
+  padding: 20px;
+  background-color: #008cba;
+  color: #fff;
+  border: 2px solid #008cba;
+  border-radius: 8px;
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease, color 0.3s ease;
+  margin-top: 20px;
+}
+
+.switch-button:hover {
+  background-color: #007799;
+}
+
+.switch-button:active {
+  transform: scale(0.99);
+}
+
+.forgot-password-link {
+  text-align: right;
+  margin-top: -15px;
+  margin-bottom: 25px;
+}
+
+.forgot-password-link a {
+  color: #008cba;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.forgot-password-link a:hover {
+  text-decoration: underline;
+}
+
+.terms-text,
+.login-text {
+  font-size: 14px;
+  color: #777;
+  margin-top: 30px;
+}
+
+.terms-text a,
+.login-text a {
+  color: #008cba;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.terms-text a:hover,
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+
+/* --- Contact Page Styles --- */
+/* --- NEW MODERN CONTACT PAGE LAYOUT --- */
+.contact-page-layout {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  width: 90vw; /* Use viewport width for better fit */
+  max-width: 1200px;
+  margin: 0 auto; /* Centered with no top/bottom margin */
+  /* We removed the 'min-height' property to prevent scrolling */
+  /* The height will now be determined by the content inside */
+}
+
+.contact-info-section, .contact-form-section {
+  flex: 1; 
+  padding: 50px; /* Slightly reduced padding for a better fit */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Left side - info section */
+.contact-info-section {
+  background-color: #008cba;
+  color: white;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-info-section h2 {
+  font-size: 2.8rem; /* Slightly reduced font size */
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.contact-info-description {
+  font-size: 1rem;
+  margin-bottom: 30px; /* Adjusted margin */
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.info-icon {
+  font-size: 1.6rem;
+  margin-right: 15px;
+  color: #fff;
+}
+
+/* Right side - form section */
+.contact-form-section {
+  background-color: #f8f9fa;
+  padding: 50px; /* Slightly reduced padding */
+}
+
+.contact-form-section h3 {
+  font-size: 1.8rem; /* Slightly reduced font size */
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30px; /* Adjusted margin */
+  text-align: center;
+}
+
+/* Form input and textarea styles */
+.contact-form-container input,
+.contact-form-container textarea {
+  padding: 14px; /* Reduced padding */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem; /* Adjusted font size */
+}
+
+.contact-form-container input:focus,
+.contact-form-container textarea:focus {
+  border-color: #008cba;
+  box-shadow: 0 0 0 3px rgba(0, 140, 186, 0.2);
+}
+
+/* Submit button style */
+.contact-form-container .submit-button {
+  width: 100%;
+  margin-top: 25px; /* Adjusted margin */
+  padding: 16px; /* Reduced padding */
+  font-size: 1.15rem; /* Adjusted font size */
+}
+
+/* --- Responsive design for mobile --- */
+@media (max-width: 992px) {
+  .contact-page-layout {
+    flex-direction: column;
+    width: 95vw;
+  }
+
+  .contact-info-section, .contact-form-section {
+    padding: 30px;
+  }
+} 

@@ -1,0 +1,222 @@
+/* UpdateProgress.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-brand-color: #4f46e5;
+  --primary-brand-light: #e0e7ff;
+  --background-color: #f3f4f6;
+  --surface-color: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-light: #ffffff;
+  --border-color: #d1d5db;
+  --success-color: #10b981;
+  --success-bg: #d1fae5;
+  --error-color: #ef4444;
+  --error-bg: #fee2e2;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-color);
+}
+
+.update-progress-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.progress-form-container {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  width: 100%;
+  max-width: 1100px;
+  background-color: var(--surface-color);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+/* --- Hero Panel (Left) --- */
+.form-hero-panel {
+  background: var(--primary-brand-color);
+  color: var(--text-light);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--primary-brand-light);
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+  margin-bottom: auto;
+}
+.back-button:hover {
+  color: var(--text-light);
+}
+
+.hero-content {
+  text-align: center;
+}
+.hero-content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0 0.5rem;
+}
+.hero-content p {
+  color: var(--primary-brand-light);
+  line-height: 1.6;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.hero-icon {
+  color: var(--text-light);
+  opacity: 0.8;
+}
+
+.hero-footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--primary-brand-light);
+  opacity: 0.7;
+}
+
+/* --- Form Panel (Right) --- */
+.form-card-panel {
+  padding: 2.5rem;
+}
+
+.form-header h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 2rem 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.input-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-brand-color);
+  box-shadow: 0 0 0 3px var(--primary-brand-light);
+}
+input::placeholder, textarea::placeholder {
+  color: var(--border-color);
+}
+select:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+}
+
+.form-actions {
+  margin-top: 2rem;
+  text-align: right;
+}
+.form-actions button {
+  background-color: var(--primary-brand-color);
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.form-actions button:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+}
+.form-actions button:disabled {
+  background-color: #a5b4fc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Message Banners */
+.form-message {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+.form-message.success {
+  background-color: var(--success-bg);
+  color: var(--success-color);
+}
+.form-message.error {
+  background-color: var(--error-bg);
+  color: var(--error-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  .progress-form-container {
+    grid-template-columns: 1fr;
+  }
+  .form-hero-panel {
+    display: none; /* Hide hero panel on smaller screens for focus on form */
+  }
+  .update-progress-page {
+    padding: 1rem;
+  }
+  .form-card-panel {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

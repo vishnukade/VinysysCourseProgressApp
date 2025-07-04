@@ -1,0 +1,296 @@
+/* UserDashboard.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #5a67d8;
+  --primary-hover: #4c58b8;
+  --secondary-color: #48bb78;
+  --background-color: #f3f5f9;
+  --surface-color: #ffffff;
+  --text-primary: #2d3748;
+  --text-secondary: #718096;
+  --border-color: #e2e8f0;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+}
+
+.user-dashboard-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* --- Sidebar Styles --- */
+.sidebar {
+  width: 240px;
+  background-color: var(--surface-color);
+  box-shadow: 2px 0 15px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  transition: transform 0.3s ease-in-out;
+  z-index: 100;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.logo {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+  color: var(--primary-color);
+  background-color: #eef2ff;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+}
+
+.logout-button {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.logout-button:hover {
+    color: #e53e3e; /* Red for logout hover */
+    background-color: #fff5f5;
+}
+
+
+/* --- Main Content Styles --- */
+.dashboard-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto; /* IMPORTANT: Local scroll, not page scroll */
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: 500;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 0.9rem;
+}
+
+/* --- Main Grid Layout --- */
+.dashboard-main-grid {
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 30px;
+  grid-template-areas:
+    "welcome progress"
+    "courses courses";
+}
+
+.dashboard-section {
+  background: var(--surface-color);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  border: 1px solid var(--border-color);
+}
+
+.welcome-card { grid-area: welcome; }
+.progress-summary-card { grid-area: progress; }
+.my-courses-container {
+  grid-area: courses;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Individual Cards & Components */
+.welcome-card h2 { margin-top: 0; }
+.progress-summary-card h3 { margin: 0 0 15px 0; }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.section-header h3 { margin: 0; }
+
+.update-button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit;
+  transition: background-color 0.2s;
+}
+
+.update-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.course-card {
+  background: #fdfdff;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 10px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.course-card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.course-card h4 { margin: 0; color: var(--text-primary); }
+.course-desc { font-size: 0.9rem; color: var(--text-secondary); flex-grow: 1; }
+.course-details { font-size: 0.85rem; color: var(--text-secondary); }
+.course-details p { margin: 4px 0; }
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.status-completed { background-color: #c6f6d5; color: #2f855a; }
+.status-in-progress { background-color: #bee3f8; color: #2b6cb0; }
+.status-not-started { background-color: #fed7d7; color: #c53030; }
+
+/* Progress Bars */
+.progress-wrap { display: flex; align-items: center; gap: 15px; margin-top: 10px; }
+.progress-bar-container { background: var(--border-color); border-radius: 10px; height: 12px; overflow: hidden; }
+.progress-fill { height: 100%; background-color: var(--primary-color); transition: width 0.5s ease-in-out; border-radius: 10px; }
+.progress-bar { background: var(--border-color); flex: 1; height: 8px; border-radius: 10px; overflow: hidden; }
+.fill { background-color: var(--secondary-color); height: 100%; transition: width 0.5s ease-in-out; }
+.progress-percentage { font-weight: 600; font-size: 0.9rem; }
+
+.loading-text, .no-courses-card {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 50px;
+}
+
+/* Responsive & Mobile Styles */
+.menu-toggle, .close-sidebar {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 110;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-main-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "welcome"
+            "progress"
+            "courses";
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: absolute;
+        transform: translateX(-100%);
+        height: 100%;
+    }
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .close-sidebar {
+        display: block;
+    }
+    .dashboard-header {
+        padding: 15px 20px;
+    }
+    .dashboard-main-grid {
+        padding: 20px;
+    }
+}
