@@ -43,21 +43,21 @@ resource "aws_s3_bucket_public_access_block" "example" {
   restrict_public_buckets = false
 }
 resource "aws_s3_bucket_policy" "bucket_policy" {
-    bucket = aws_s3_bucket.myweb-app.id
-    policy = jsonencode(
-    {
-        Version= "2012-10-17",
-        Statement= [
-            {
-                Sid = "PublicReadGetObject",
-                Effect = "Allow",
-                Principal = "*",
-                Action = "s3:GetObject",
-                Resource = "arn:aws:s3:::${aws_s3_bucket.myweb-app.id}/*"
-            }
-        ]
-    })
-  
+  bucket = aws_s3_bucket.myweb-app.id
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid       = "PublicReadGetObject"
+        Effect    = "Allow"
+        Principal = "*"
+        Action    = "s3:GetObject"
+        Resource  = "arn:aws:s3:::${aws_s3_bucket.myweb-app.id}/*"
+      }
+    ]
+  })
+
+  depends_on = [aws_s3_bucket_public_access_block.example]
 }
 
 resource "aws_s3_bucket_website_configuration" "webapp" {
