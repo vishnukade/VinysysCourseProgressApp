@@ -8,7 +8,7 @@ const Header = () => {
     <header className="header">
       <div className="logo">
         <FaLaptopCode size={24} style={{ marginRight: '10px' }} />
-        Vinsys Course Progress Tracker
+        Vinsys Course Progress
       </div>
       <nav className="nav-links">
         <a href="#home">Home</a>
