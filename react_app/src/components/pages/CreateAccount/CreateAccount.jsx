@@ -7,10 +7,12 @@ export default function CreateAccount() {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("USER");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
     try {
       const response = await fetch("https://o09mpf9zbk.execute-api.us-west-2.amazonaws.com/prod/createaccount", {
@@ -27,6 +29,7 @@ export default function CreateAccount() {
       });
 
       const data = await response.json();
+      setLoading(false);
 
       if (response.ok) {
         localStorage.setItem("adminToken", data.token);
@@ -42,6 +45,7 @@ export default function CreateAccount() {
     } catch (err) {
       console.error(err);
       setError("Network error");
+      setLoading(false);
     }
   };
 
@@ -52,6 +56,13 @@ export default function CreateAccount() {
         <form onSubmit={handleSubmit}>
           {error && <p style={{ color: "red" }}>{error}</p>}
 
+          {loading && (
+            <div className="spinner-container">
+              <div className="spinner"></div>
+              <p className="loading-text">Creating account...</p>
+            </div>
+          )}
+
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input
@@ -60,6 +71,7 @@ export default function CreateAccount() {
               placeholder="Enter your name"
               value={username}
               onChange={(e) => setName(e.target.value)}
+              disabled={loading}
             />
           </div>
 
@@ -71,6 +83,7 @@ export default function CreateAccount() {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              disabled={loading}
             />
           </div>
 
@@ -82,6 +95,7 @@ export default function CreateAccount() {
               placeholder="Create a password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              disabled={loading}
             />
           </div>
 
@@ -91,23 +105,24 @@ export default function CreateAccount() {
               id="role"
               value={role}
               onChange={(e) => setRole(e.target.value)}
+              disabled={loading}
             >
               <option value="USER">User</option>
               <option value="ADMIN">Admin</option>
             </select>
           </div>
 
-          <button type="submit" className="signup-button">
-            Sign Up
+          <button type="submit" className="signup-button" disabled={loading}>
+            {loading ? "Signing Up..." : "Sign Up"}
           </button>
         </form>
 
         <p className="terms-text">
           By signing up, you agree to our <a href="#">Terms of Service</a>
         </p>
-        {/* <p className="login-text"> */}
-          Already have an account? <a href="#">Login here</a>
-        {/* </p> */} 
+        <p className="login-text">
+          Already have an account? <a href="/user-login">Login here</a>
+        </p>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import Contact from './components/pages/Home/contact.jsx';
+// import Contact from './components/pages/Home/contact.jsx';
 import Header from './components/pages/Home/Header.jsx';
 import Hero from './components/pages/Home/Hero.jsx';
 import Features from './components/pages/Home/Features.jsx';
@@ -11,6 +11,9 @@ import CreateAccount from './components/pages/CreateAccount/CreateAccount.jsx';
 import ProgressEntryPage from './components/pages/UpdateProgress/UpdateProgress.jsx';
 import UserDashboard from './components/pages/User/UserDashbord.jsx';
 import AdminDashboard from "./components/pages/Admin/AdminDashbord.jsx";
+import PrivacyPolicy from './components/pages/TermPolicy/Privacy.jsx';
+import TermsConditions from './components/pages/TermPolicy/TermsConditions.jsx';
+import ContactUs from './components/pages/TermPolicy/ContactUs.jsx';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 
@@ -45,8 +48,9 @@ function AppContent() {
           <Route path="/user-dashboard" element={<UserDashboard />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/progress-update" element={<ProgressEntryPage />} />
-
-          <Route path="/contact" element={<Contact />} /> 
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/privacy" element={<PrivacyPolicy/>} />
+          <Route path="/features" element={<Features />} />
         </Routes>
       </main>
       {!hideLayout && <Footer />}

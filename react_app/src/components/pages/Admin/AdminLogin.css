@@ -89,20 +89,20 @@ body {
   transform: scale(0.99);
 }
 
-/* Secondary Switch Button */
-.switch-button {
-  width: 100%;
-  padding: 18px;
-  background-color: #008cba; /* Same teal color */
-  color: #fff;
-  border: 2px solid #008cba; /* A border with the same color, but it's a solid fill in the image */
-  border-radius: 8px;
-  font-size: 20px;
-  font-weight: 600;
+.switch-link {
+  margin-top: 20px;
+  color: #007bff;
+  text-decoration: underline;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease, color 0.3s ease;
-  margin-top: 15px; /* Spacing between the two buttons */
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
+
+.switch-link:hover {
+  color: #0056b3;
+}
+
 
 .switch-button:hover {
   background-color: #007799;
@@ -110,4 +110,31 @@ body {
 
 .switch-button:active {
   transform: scale(0.99);
+}
+
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #667EEA; /* Your primary color */
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-weight: 500;
+  color: #444;
 }

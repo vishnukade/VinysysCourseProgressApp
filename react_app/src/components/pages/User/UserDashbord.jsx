@@ -185,7 +185,7 @@ const UserDashboard = () => {
                                     ) : (
                                         <div className="no-courses-card">
                                             <p>You haven't enrolled in any courses yet.</p>
-                                            <button className="update-button">Explore Courses</button>
+                                            <button onClick={handleUpdateProgress} className="update-button">Explore Courses</button>
                                         </div>
                                     )}
                                 </div>

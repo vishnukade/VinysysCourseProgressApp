@@ -11,7 +11,7 @@ const Hero = () => {
   const navigate = useNavigate();
   return (
     <section className="hero-section">
-      <h1>Welcome to Course Progress </h1>
+      <h1>Welcome to Course Progress Tracker</h1>
       <p>Track your learning journey effortlessly and stay motivated.</p>
       <img src={heroImage} alt="Person tracking progress on charts" className="hero-image" />
       <div className="hero-buttons">

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import './AdminLogin.css';
+
 export default function AdminLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // ✅ New loading state
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // prevent default form submit
-
-    setError(""); // clear any previous errors
+    e.preventDefault();
+    setError("");
+    setLoading(true); // ✅ Start loading
 
     try {
       const response = await fetch("https://o09mpf9zbk.execute-api.us-west-2.amazonaws.com/prod/admin", {
@@ -19,17 +21,15 @@ export default function AdminLogin() {
         body: JSON.stringify({
           username,
           password,
-          role : "ADMIN"
+          role: "ADMIN"
         })
       });
 
       const data = await response.json();
+      setLoading(false); // ✅ Stop loading after response
 
       if (response.ok) {
-        // Save JWT to localStorage
         localStorage.setItem("adminToken", data.token);
-
-        // Redirect to admin dashboard
         window.location.href = "/admin-dashboard";
       } else {
         setError(data.message || "Login failed");
@@ -37,18 +37,27 @@ export default function AdminLogin() {
     } catch (err) {
       console.error(err);
       setError("Network error");
+      setLoading(false); // ✅ Stop loading on error
     }
   };
 
   const switchToUserLogin = () => {
-  window.location.href = "/user-login";
-};
+    window.location.href = "/user-login";
+  };
+
   return (
     <div className="app-container">
       <div className="form-container">
         <h2>Admin Login</h2>
         <form onSubmit={handleSubmit}>
           {error && <p style={{ color: "red" }}>{error}</p>}
+          {loading && (
+  <div className="spinner-container">
+    <div className="spinner"></div>
+    <p className="loading-text">Logging in...</p>
+  </div>
+)}
+
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input
@@ -57,6 +66,7 @@ export default function AdminLogin() {
               placeholder="Enter your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              disabled={loading} // ✅ Disable input
             />
           </div>
           <div className="form-group">
@@ -67,15 +77,16 @@ export default function AdminLogin() {
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              disabled={loading} // ✅ Disable input
             />
           </div>
-          <button type="submit" className="login-button">
-            Login
+          <button type="submit" className="login-button" disabled={loading}>
+            {loading ? "Logging in..." : "Login"} {/* ✅ Button shows status */}
           </button>
         </form>
-        <button className="switch-button" onClick={switchToUserLogin}>
+        <p className="switch-link" onClick={switchToUserLogin}>
           Switch to User Login
-        </button>
+        </p>
       </div>
     </div>
   );
