@@ -35,7 +35,6 @@ jobs:
 
       - name: Copy build files to Terraform directory
         run: |
-          rm -rf ./terraform_static_webhosting/build
           cp -r ./react_app/build ./terraform_static_webhosting/
 
       - name: Setup Terraform
