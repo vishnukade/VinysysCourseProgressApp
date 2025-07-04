@@ -327,7 +327,7 @@ const Admin = () => {
         <div className="admin-dashboard">
             <div className="sidebar">
                 <div className="logo">
-                    <h3>VINSYS Tracker</h3>
+                    <h3>VINSYS Tracke</h3>
                 </div>
                 <ul className="sidebar-menu">
                     <li className="active">
